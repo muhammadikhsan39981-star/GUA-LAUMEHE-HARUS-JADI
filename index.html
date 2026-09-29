@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUA LAUMEHE — Digital Cave Experience</title>
+<meta name="description" content="Jelajahi Gua Laumehe di Mantopi, Mawasangka Timur, Buton Tengah, Sulawesi Tenggara melalui peta digital dan storytelling.">
+<meta property="og:title" content="GUA LAUMEHE — Digital Cave Experience">
+<meta property="og:image" content="images/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#story">Lewati ke konten</a>
+<header class="nav" id="home-nav">
+  <a class="logo" href="#home">LAUMEHE</a>
+  <button class="burger" aria-label="Buka menu" aria-expanded="false">Menu</button>
+  <nav id="menu">
+    <a href="#home">Home</a><a href="#story">Storytelling</a><a href="#mapping">Digital Mapping</a><a href="#explore">Explore Cave</a><a href="#gallery">Gallery</a><a href="#visit">Visit</a>
+  </nav>
+  <a class="btn" href="#mapping">Start Exploring</a>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <img class="ph-img" src="images/hero.jpg" alt="Formasi stalaktit di dalam Gua Laumehe" fetchpriority="high">
+  <div class="hero-in">
+    <p class="kicker">Discover the hidden beauty</p>
+    <h1>GUA LAUMEHE</h1>
+    <h2>Keindahan Alam di Balik Stalaktit dan Stalagmit</h2>
+    <p class="lead">Jelajahi keindahan, cerita, dan misteri alam Gua Laumehe melalui pengalaman wisata digital yang interaktif.</p>
+    <div class="row"><a class="btn" href="#mapping">Explore the Cave</a><a class="btn ghost" href="#story">Discover the Story</a></div>
+    <dl class="facts glass">
+      <div><dt>Lokasi</dt><dd>Mantopi, Mawasangka Timur</dd></div>
+      <div><dt>Koordinat</dt><dd>-5.3809, 122.8897</dd></div>
+      <div><dt>Kedalaman eksplorasi</dt><dd>± 86 m*</dd></div>
+      <div><dt>Jalur tracking</dt><dd>± 400 m*</dd></div>
+    </dl>
+    <p class="note">*Informasi awal, perlu diverifikasi di lapangan.</p>
+  </div>
+  <div class="thumbs" id="thumbs" aria-label="Pilih titik gua"></div>
+</section>
+
+<section id="story" class="sec">
+  <h2 class="title">Cerita Gua Laumehe</h2>
+  <p class="sub">Konten di bawah adalah placeholder. Isi dari wawancara masyarakat dan sumber tepercaya.</p>
+  <ol class="timeline" id="timeline"></ol>
+</section>
+
+<section id="mapping" class="sec">
+  <h2 class="title">Digital Mapping Interaktif</h2>
+  <p class="sub">Geser untuk berpindah, gulir atau gunakan tombol untuk zoom. Klik penanda untuk detail titik.</p>
+  <div class="map-wrap">
+    <div class="viewer glass" id="viewer" tabindex="0" aria-label="Peta digital gua, dapat digeser dan diperbesar">
+      <div class="canvas" id="canvas">
+        <img id="mapimg" src="images/peta-laumehe.png" alt="Peta digital Gua Laumehe">
+        <p class="empty" id="mapempty">Letakkan gambar mapping asli di <code>images/peta-laumehe.png</code></p>
+      </div>
+      <div class="zoom"><button data-z="1" aria-label="Perbesar">+</button><button data-z="-1" aria-label="Perkecil">−</button><button data-z="0" aria-label="Reset">⟲</button></div>
+    </div>
+    <aside class="panel glass" id="panel" aria-live="polite"></aside>
+  </div>
+  <p class="note">Posisi penanda mengikuti gambar mapping dan bukan koordinat GPS terverifikasi. Ubah di <code>script.js</code> (x, y dalam persen).</p>
+</section>
+
+<section id="location" class="sec">
+  <h2 class="title">Lokasi Geografis</h2>
+  <div class="row"><a class="btn" id="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps?q=-5.3809,122.8897">Open in Google Maps</a><button class="btn ghost" id="copy">Salin koordinat</button><span id="copied" role="status"></span></div>
+  <p class="note">Plus Code (dari Google Maps): JFG8+8GQ · Mawasangka Timur, Kabupaten Buton, Sulawesi Tenggara 93762</p>
+  <div id="geomap" class="glass" aria-label="Peta lokasi Gua Laumehe"></div>
+  <p class="note">Hanya titik lokasi utama. Koordinat bagian dalam gua belum tersedia.</p>
+</section>
+
+<section id="explore" class="sec">
+  <h2 class="title">Explore the Cave</h2>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="tour" class="sec">
+  <h2 class="title">Virtual Tour</h2>
+  <div class="tour glass">
+    <div id="pano"><div class="tour-ph"><strong>Virtual tour belum tersedia</strong><p>Tambahkan foto panorama 360° atau video dokumentasi asli di <code>images/panorama.jpg</code> atau <code>images/tour.mp4</code>, lalu atur di <code>script.js</code>.</p></div></div>
+  </div>
+</section>
+
+<section id="gallery" class="sec">
+  <h2 class="title">Gallery</h2>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="visit" class="sec">
+  <h2 class="title">Informasi Kunjungan</h2>
+  <div class="visit">
+    <article class="glass"><h3>Lokasi</h3><p>Mantopi, Mawasangka Timur, Kabupaten Buton Tengah, Sulawesi Tenggara.</p></article>
+    <article class="glass"><h3>Akses</h3><p>[Placeholder: rute, jarak, dan kondisi jalan dari data lapangan.]</p></article>
+    <article class="glass"><h3>Panduan pengunjung</h3><p>Jangan merusak formasi, jangan membuang sampah, dan jangan menyentuh stalaktit atau stalagmit.</p></article>
+    <article class="glass warn"><h3>Keselamatan</h3><p>Ikuti arahan pemandu lokal, gunakan perlengkapan yang sesuai, dan hindari area yang belum dinyatakan aman.</p></article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <a class="logo" href="#home">LAUMEHE</a>
+  <nav><a href="#story">Storytelling</a><a href="#mapping">Digital Mapping</a><a href="#explore">Explore Cave</a><a href="#visit">Visit</a></nav>
+  <p>Mantopi, Mawasangka Timur, Buton Tengah, Sulawesi Tenggara</p>
+  <p><a href="#" data-social="instagram">Instagram</a> · <a href="#" data-social="youtube">YouTube</a> · <a href="#" data-social="tiktok">TikTok</a> <small>(tautan diisi kemudian)</small></p>
+  <p><small>© 2026 Gua Laumehe — Digital Cave Experience</small></p>
+</footer>
+
+<dialog id="dlg"><button class="x" aria-label="Tutup">×</button><div id="dlgbody"></div></dialog>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
